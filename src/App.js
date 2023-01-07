@@ -29,7 +29,6 @@ function App() {
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
       data.map((pokemon) => {
-        // console.log(pokemon);
         let pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       })
