@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Card } from "./components/Card/Card";
-import { Navbar } from "./components/Card/Navbar/Navbar";
+import { Navbar } from "./components/Navbar/Navbar";
 import { getAllPokemon, getPokemon } from "./utils/pokemon.js";
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
       let res = await getAllPokemon(initialURL);
       // 各ポケモンの詳細なデータを取得
       loadPokemon(res.results);
-      // console.log(res.results);
 
       setNextURL(res.next);
       setPrevURL(res.previous);
@@ -30,7 +29,6 @@ function App() {
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
       data.map((pokemon) => {
-        // console.log(pokemon);
         let pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       })
