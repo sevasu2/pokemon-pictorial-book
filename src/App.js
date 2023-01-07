@@ -29,6 +29,7 @@ function App() {
   const loadPokemon = async (data) => {
     let _pokemonData = await Promise.all(
       data.map((pokemon) => {
+        // console.log(pokemon);
         let pokemonRecord = getPokemon(pokemon.url);
         return pokemonRecord;
       })
@@ -54,6 +55,7 @@ function App() {
     let data = await getAllPokemon(prevURL);
     await loadPokemon(data.results);
     setNextURL(data.next);
+    setPrevURL(data.previous);
     setLoading(false);
   };
 
